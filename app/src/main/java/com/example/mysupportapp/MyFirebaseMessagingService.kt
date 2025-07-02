@@ -1,17 +1,11 @@
-package com.example.mysupportapp;
+package com.example.mysupportapp
+
+import com.google.firebase.messaging.FirebaseMessagingService
+import com.google.firebase.messaging.RemoteMessage
 
 
-import androidx.annotation.NonNull;
-
-import com.google.firebase.messaging.FirebaseMessagingService;
-import com.google.firebase.messaging.RemoteMessage;
-public class MyFirebaseMessagingService extends FirebaseMessagingService {
-
-    private static final String TAG = "MyFirebaseMsgService";
-
-    @Override
-    public void onMessageReceived(@NonNull RemoteMessage message) {
-
+class MyFirebaseMessagingService : FirebaseMessagingService() {
+    override fun onMessageReceived(message: RemoteMessage) {
         // SI QUIERO PROCESAR DATOS DE LA NOTIFICACION
         //if (message.getData().size() > 0) {
         //    Log.d(TAG, "Message data payload: " + message.getData());
@@ -20,10 +14,11 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         //    Log.d(TAG, "Message Notification Body: " + message.getNotification().getBody());
         //}
 
-        super.onMessageReceived(message);
+        super.onMessageReceived(message)
     }
 
 
-
-
+    companion object {
+        private const val TAG = "MyFirebaseMsgService"
+    }
 }

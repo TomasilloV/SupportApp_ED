@@ -1,11 +1,9 @@
-package com.example.mysupportapp;
+package com.example.mysupportapp
 
 /**
  * Archivo con parametros modificables de configuracion
  */
-public class Configuracion {
-
+object Configuracion {
     //URL del servidor
-    public static final String URL_SERVIDOR = "https://erp.ed-intra.com/soporte/registrarDispositivo.php";
-
+    const val URL_SERVIDOR: String = "https://api.ed-intra.com/api/dispositivo/registrar"
 }

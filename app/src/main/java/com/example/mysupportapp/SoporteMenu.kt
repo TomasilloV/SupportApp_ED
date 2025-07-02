@@ -1,13 +1,12 @@
-package com.example.mysupportapp;
+package com.example.mysupportapp
 
-import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 
-    public class SoporteMenu extends AppCompatActivity {
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.soporte_menu);
-        }
+class SoporteMenu : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.soporte_menu)
     }
+}
 

@@ -15,6 +15,12 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/icononotificacion" />
+
+        <activity
+            android:name=".Login"
+            android:exported="true"
+            android:screenOrientation="portrait"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

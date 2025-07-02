@@ -37,6 +37,12 @@
             android:paddingTop="12dp"
             android:paddingBottom="12dp" />
 
+        <Button
+            android:id="@+id/boton"
+            android:layout_width="match_parent"
+            android:layout_height="200px"
+            />
+
     </LinearLayout>
 
     <com.google.android.material.appbar.AppBarLayout

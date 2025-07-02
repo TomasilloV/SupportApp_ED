@@ -1,10 +1,7 @@
-package com.example.mysupportapp;
+package com.example.mysupportapp
 
-public class Constantes {
-
-    public static final String SP_FILE = "SP_FILE";
-    public static final String SP_KEY_DEVICEID = "DEVICEID";
-    public static final String SP_KEY_ID = "ID";
-
-
+object Constantes {
+    const val SP_FILE: String = "SP_FILE"
+    const val SP_KEY_DEVICEID: String = "DEVICEID"
+    const val SP_KEY_ID: String = "ID"
 }

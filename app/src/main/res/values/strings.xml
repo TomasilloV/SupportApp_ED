@@ -1,12 +1,99 @@
 <resources>
-    <string name="app_name">MySupportApp</string>
-    <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    versionText.text = "v" + packageManager.getPackageInfo(packageName, 0).versionName
+    <!-- General -->
+    <string name="app_name">CoordiApp</string>
+    <string name="logo">Logo</string>
+    <string name="bienvenido">BIENVENIDO</string>
+    <string name="usuario">Usuario</string>
+    <string name="nuevo">Nuevo</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <!-- Authentication -->
+    <string name="iniciar_sesion">Iniciar sesión</string>
+    <string name="problemas">¿Tienes problemas? Repórtalo a quien corresponda</string>
+
+    <!-- Steps -->
+    <string name="step">Step_Paso</string>
+    <string name="paso_1">Domicilio</string>
+    <string name="paso_2">Paso 2</string>
+    <string name="paso_3">ONT/Modem</string>
+    <string name="paso_4">Registro Servicio</string>
+    <string name="paso_5">Cliente</string>
+    <string name="paso_6">Paso 6</string>
+    <string name="paso_7">Terminal</string>
+    <string name="siguiente">Siguiente</string>
+    <string name="validemos">Validemos la orden</string>
+
+    <!-- Task Details -->
+    <string name="estatus">ESTATUS</string>
+    <string name="tipo_tarea">TIPO_TAREA</string>
+    <string name="contratista">CONTRATISTA</string>
+    <string name="tecnologia">TECNOLOGÍA</string>
+    <string name="Cope">COPE</string>
+    <string name="folio_pisa">FOLIO PISA</string>
+    <string name="latitud">LATITUD</string>
+    <string name="longitud">LONGITUD</string>
+    <string name="tecnico">TÉCNICO</string>
+    <string name="fechaCordiApp">FECHA COORDIAPP</string>
+    <string name="telefono">TELÉFONO</string>
+    <string name="division">DIVISIÓN</string>
+    <string name="area">ÁREA</string>
+    <string name="distrito">DISTRITO</string>
+    <string name="metraje">METRAJE</string>
+    <string name="terminal">TERMINAL</string>
+    <string name="puerto">PUERTO</string>
+    <string name="fotografia_ont_modem">Fotografía ONT / modem</string>
+    <string name="fotografia_no_serie_ont_modem">Fotografía no. serie ONT / modem</string>
+
+    <!-- Actions -->
+    <string name="ver_folios">VER FOLIOS</string>
+    <string name="ver">Ver</string>
+    <string name="agregar">Agregar</string>
+    <string name="reportar">Reportar</string>
+    <string name="subir_foto">Subir Foto</string>
+
+    <!-- Miscellaneous -->
+    <string name="enlace_digital">ENLACE DIGITAL</string>
+    <string name="cancelar">Cancelar</string>
+
+    <!-- Arrays -->
+    <string-array name="instalacion_options">
+        <item>Elige una opción</item>
+        <item>SUBTERRANEA</item>
+        <item>AEREA</item>
+    </string-array>
+
+    <string-array name="numbersPuerto">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
+
+    <string-array name="meses_es">
+        <item>enero</item>
+        <item>febrero</item>
+        <item>marzo</item>
+        <item>abril</item>
+        <item>mayo</item>
+        <item>junio</item>
+        <item>julio</item>
+        <item>agosto</item>
+        <item>septiembre</item>
+        <item>octubre</item>
+        <item>noviembre</item>
+        <item>diciembre</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="paso_2_1">Paso 2.1</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>
