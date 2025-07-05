@@ -1,7 +1,7 @@
 <resources>
     versionText.text = "v" + packageManager.getPackageInfo(packageName, 0).versionName
     <!-- General -->
-    <string name="app_name">CoordiApp</string>
+    <string name="app_name">SupportApp</string>
     <string name="logo">Logo</string>
     <string name="bienvenido">BIENVENIDO</string>
     <string name="usuario">Usuario</string>

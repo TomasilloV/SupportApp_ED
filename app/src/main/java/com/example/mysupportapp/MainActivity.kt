@@ -20,11 +20,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        findViewById<Button>(R.id.boton).setOnClickListener {
-            startActivity(Intent(this, Login::class.java))
-        }
+
         registrarDispositivo()
-        pedirPermisoNotificaciones()
+        startActivity(Intent(this, Login::class.java))
 
         /*var fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -90,42 +88,6 @@ class MainActivity : AppCompatActivity() {
                     Log.d("Token",""+token)
                 }
             })
-    }
-
-    private fun pedirPermisoNotificaciones() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            if (ContextCompat.checkSelfPermission(
-                    this,
-                    Manifest.permission.POST_NOTIFICATIONS
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                ActivityCompat.requestPermissions(
-                    this,
-                    arrayOf<String>(Manifest.permission.POST_NOTIFICATIONS),
-                    NOTIFICATION_PERMISSION_CODE
-                )
-            } else {
-                Log.d("Permiso", "Ya tienes permiso pa' notificaciones")
-            }
-        } else {
-            Log.d("Permiso", "No hace falta pedir permiso en esta versión de Android")
-        }
-    }
-
-    // Opcional: manejar la respuesta del usuario
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == NOTIFICATION_PERMISSION_CODE) {
-            if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Log.d("Permiso", "¡Permiso concedido!")
-            } else {
-                Log.d("Permiso", "Permiso denegado...")
-            }
-        }
     }
 
     companion object {

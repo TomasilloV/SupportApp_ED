@@ -7,11 +7,13 @@ import com.android.volley.Response
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.mysupportapp.singleton.PreferencesHelper
 import org.json.JSONException
 import org.json.JSONObject
 
 object DeviceManager {
     private const val TAG = "DeviceManager" // Para los logs
+    private val preferencesManager = PreferencesHelper.getPreferencesManager()
 
     fun postRegistrarDispositivoEnServidor(token: String?, context: Context?) {
         // Validar contexto y token
@@ -36,11 +38,14 @@ object DeviceManager {
         val queue = Volley.newRequestQueue(context)
         val url = Configuracion.URL_SERVIDOR
 
+        Log.d("KLKRESPONSES","AAAAAAAAAAAAA")
+
         // Request a string response from the provided URL.
         val stringRequest: StringRequest = object : StringRequest(
             Method.POST, url,
             object : Response.Listener<String?> {
                 override fun onResponse(response: String?) {
+                    Log.d("KLKRESPONSES","AAAAAAAAAAAAA")
                     if (response == null) {
                         Log.e(TAG, "Respuesta del servidor es null")
                         return  // Si la respuesta es null, no procesamos nada
@@ -54,9 +59,10 @@ object DeviceManager {
                         val id = respObj.getInt("id")
 
                         Log.d(
-                            TAG,
+                            "KLKRESPONSES",
                             "Respuesta del servidor: code=" + code + ", message=" + message + ", id=" + id
                         )
+                        Log.d("KLKRESPONSES","Id: "+id+"  token: "+token)
 
                         if ("OK" == code) {
                             // Validar que SharedPreferences esté disponible
@@ -77,7 +83,7 @@ object DeviceManager {
                             Log.w(TAG, "Código no OK: " + code)
                         }
                     } catch (e: JSONException) {
-                        Log.e(TAG, "Error al parsear la respuesta JSON", e)
+                        Log.e("KLKRESPONSE", "Error al parsear la respuesta JSON", e)
                     }
                 }
             }, object : Response.ErrorListener {

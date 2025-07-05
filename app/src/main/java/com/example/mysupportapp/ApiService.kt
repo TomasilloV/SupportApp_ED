@@ -52,10 +52,11 @@ interface ApiService {
      * @param usuarioApp Nombre del usuario que inicia sesión.
      * @return Una llamada Retrofit que devuelve la respuesta con los detalles del login.
      */
-    @GET("login-coordiapp/iniciar-sesion/{username}")
+    @GET("login-supportapp/iniciar-sesion/{username}/{id}")
     @Headers("Accept: application/json", "Content-Type: application/json")
     fun login(
         @Path("username") usuarioApp: String,
+        @Path("id") id: Int
     ): Call<LoginResponse>
 
     /**

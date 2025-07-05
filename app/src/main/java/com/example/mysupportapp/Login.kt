@@ -3,6 +3,8 @@ package com.example.mysupportapp
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
@@ -11,6 +13,8 @@ import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.mysupportapp.models.LoginResponse
 import com.example.mysupportapp.singleton.PreferencesHelper
@@ -52,8 +56,14 @@ class Login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        pedirPermisoNotificaciones()
+
+        val sharedPrefs = getSharedPreferences(Constantes.SP_FILE, Context.MODE_PRIVATE)
+        val idGuardado = sharedPrefs.getInt(Constantes.SP_KEY_ID, 0)
+        Log.d("idss","este es el id: "+idGuardado)
+
         // Configura el botón de login
-        /*val loginButton = findViewById<Button>(R.id.loginButton)
+        val loginButton = findViewById<Button>(R.id.loginButton)
         val userEditText = findViewById<EditText>(R.id.user)
         loadingLayout = findViewById(R.id.loading_layout)
 
@@ -68,7 +78,7 @@ class Login : AppCompatActivity() {
             lifecycleScope.launch {
                 loadingLayout.setLoadingVisibility(true)
                 val apiService = createRetrofitService(this@Login)
-                val call = apiService.login(username)
+                val call = apiService.login(username,idGuardado)
                 Log.d("LoginDebug", "Intentando login con usuario: '$username'")
                 Log.d("LoginDebug", "URL: ${call.request().url}")
                 Log.d("LoginDebug", "Headers: ${call.request().headers}")
@@ -103,9 +113,9 @@ class Login : AppCompatActivity() {
                     }
                 })
             }
-        }*/
+        }
     }
-/*
+
     /**
      * Procesa la respuesta de inicio de sesión.
      * Si la autenticación es exitosa, guarda los datos del usuario y redirige al menú principal.
@@ -114,6 +124,10 @@ class Login : AppCompatActivity() {
      */
     private fun handleLoginResponse(response: Response<LoginResponse>) {
         loadingLayout.setLoadingVisibility(false)
+        Log.d("LoginDebugd", "Código HTTP: ${response.code()}")
+        Log.d("LoginDebugd", "Es exitoso: ${response.isSuccessful}")
+        Log.d("LoginDebugd", "Mensaje: ${response.message()}")
+        Log.d("LoginDebugd", "Raw body: ${response.errorBody()?.string()}")
         if (response.isSuccessful) {
             val loginResponse = response.body()
             if (loginResponse?.mensaje == "Datos Correctos") {
@@ -141,5 +155,48 @@ class Login : AppCompatActivity() {
     override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
         hideKeyboardOnOutsideTouch(ev)
         return super.dispatchTouchEvent(ev)
-    }*/
+    }
+
+    private fun pedirPermisoNotificaciones() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf<String>(Manifest.permission.POST_NOTIFICATIONS),
+                    NOTIFICATION_PERMISSION_CODE
+                )
+            } else {
+                Log.d("Permiso", "Ya tienes permiso pa' notificaciones")
+            }
+        } else {
+            Log.d("Permiso", "No hace falta pedir permiso en esta versión de Android")
+        }
+    }
+
+    // Opcional: manejar la respuesta del usuario
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == NOTIFICATION_PERMISSION_CODE) {
+            if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Log.d("Permiso", "¡Permiso concedido!")
+            } else {
+                Log.d("Permiso", "Permiso denegado...")
+            }
+        }
+    }
+
+    companion object {
+        // private AppBarConfiguration appBarConfiguration;
+        private const val NOTIFICATION_PERMISSION_CODE = 1001
+
+        private const val TAG = "MainActivity" // Para los logs
+    }
 }
